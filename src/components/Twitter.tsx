@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import './ExploreContainer.css';
 
 /* Axios client to send Ajax requests to the REST API. */
 import axios from "axios";
 import { IonApp, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent } from '@ionic/react';
 
 
-class ExploreContainer extends Component {
+class Twitter extends Component {
   API_URL = `https://reqres.in/api/users?page=0&per_page=12`;
 
   state = {
@@ -24,7 +23,6 @@ class ExploreContainer extends Component {
   }
   render() {
     return (
-      <div className="container">
       <IonApp>
         <IonContent fullscreen>
           {this.state.users.map(
@@ -41,9 +39,8 @@ class ExploreContainer extends Component {
           )}
         </IonContent>
       </IonApp>
-    </div>
     );
   }
 };
 
-export default ExploreContainer;
+export default Twitter;

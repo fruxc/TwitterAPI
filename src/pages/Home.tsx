@@ -1,6 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
-import ExploreContainer from '../components/ExploreContainer';
+import Twitter from '../components/Twitter';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -17,7 +17,8 @@ const Home: React.FC = () => {
             <IonTitle size="large">Twitter</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
+        Calling Twitter components
+        <Twitter></Twitter>
       </IonContent>
     </IonPage>
   );
