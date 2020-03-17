@@ -1,0 +1,7 @@
+{
+  "name": "Twitter",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
