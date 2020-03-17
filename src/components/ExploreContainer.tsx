@@ -1,15 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './ExploreContainer.css';
 
-interface ContainerProps { }
+/* Axios client to send Ajax requests to the REST API. */
+import axios from "axios";
+import { IonApp, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent } from '@ionic/react';
 
-const ExploreContainer: React.FC<ContainerProps> = () => {
-  return (
-    <div className="container">
-      <strong>Ready to create an app?</strong>
-      <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+class ExploreContainer extends Component {
+  API_URL = `https://reqres.in/api/users?page=0&per_page=12`;
+
+  state = {
+    users: []
+  };
+
+  componentDidMount() {
+    axios
+      .get(this.API_URL)
+      .then(response => response.data)
+      .then(data => {
+        this.setState({ users: data.data });
+        console.log(this.state.users);
+      });
+  }
+  render() {
+    return (
+      <div className="container">
+      <IonApp>
+        <IonContent fullscreen>
+          {this.state.users.map(
+            ({ id, email, first_name, last_name, avatar }) => (
+              <IonCard key={id}>
+                <img alt="profile" src={avatar} />
+                <IonCardHeader>
+                  <IonCardTitle>{first_name}</IonCardTitle>
+                  <IonCardSubtitle>{last_name}</IonCardSubtitle>
+                </IonCardHeader>
+                <IonCardContent>Email: {email}</IonCardContent>
+              </IonCard>
+            )
+          )}
+        </IonContent>
+      </IonApp>
     </div>
-  );
+    );
+  }
 };
 
 export default ExploreContainer;
